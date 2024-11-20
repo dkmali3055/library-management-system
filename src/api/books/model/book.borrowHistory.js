@@ -17,6 +17,10 @@ const booksBorrowSchema = new Schema(
       type: String,
       enum: bookAction.values,
     },
+    isReturned: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

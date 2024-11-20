@@ -20,5 +20,6 @@ exports.message = {
     NOT_FOUND: 'Book not found.',
     OUT_OF_STOCK: 'Book out of stock.',
     NO_BOOK_FOUND_FOR_RETURN: 'No books found for return',
+    alreadyReturned: 'Book has already been returned',
   },
 };

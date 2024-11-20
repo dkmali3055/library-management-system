@@ -34,6 +34,9 @@ const addBookReturn = catchAsync(async (req, res) => {
   if (!existRecord) {
     throw new ApiError(httpStatus.BAD_REQUEST, message.bookBorrowReturn.NO_BOOK_FOUND_FOR_RETURN);
   }
+  if (existRecord.isReturned) {
+    throw new ApiError(httpStatus.BAD_REQUEST, message.bookBorrowReturn.alreadyReturned);
+  }
   let bookId = existRecord.bookId;
   const existBooks = await bookService.findOneBook({ _id: bookId });
   if (!existBooks) {
@@ -42,6 +45,8 @@ const addBookReturn = catchAsync(async (req, res) => {
 
   existBooks.stock = existBooks.stock + 1;
   await existBooks.save();
+  existRecord.isReturned = true;
+  await existRecord.save();
   const bookBorrow = await bookBorrowService.addBookBorrow({ userId, bookId, type: bookAction.return });
   broadcastEvent(events.return, { message: message.bookBorrowReturn.returned, data: { book: existBooks, user: req.user } }); // broadcast event
   return response(httpStatus.OK, message.bookBorrowReturn.returned, { bookBorrow }, true, req, res);

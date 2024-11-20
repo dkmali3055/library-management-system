@@ -32,8 +32,22 @@ const getAllBookBorrowByFilter = async (options) => {
     {
       $lookup: {
         from: config.collections.users,
-        localField: 'userId',
-        foreignField: '_id',
+        let: { userId: '$userId' },
+        pipeline: [
+          {
+            $match: {
+              $expr: {
+                $and: [{ $eq: ['$_id', '$$userId'] }],
+              },
+            },
+          },
+          {
+            $project: {
+              password: 0,
+              role: 0,
+            },
+          },
+        ],
         as: 'user',
       },
     },
@@ -50,6 +64,10 @@ const getAllBookBorrowByFilter = async (options) => {
   if (options.search) {
     const reg = new RegExp(options.search, 'i');
     filter.$or = [{ 'book.title': reg }, { 'user.username': reg }];
+  }
+
+  if (options.userId) {
+    filter.userId = new ObjectId(options.userId);
   }
   aggregateArray.push({
     $match: filter,
