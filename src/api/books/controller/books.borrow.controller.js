@@ -31,7 +31,7 @@ const addBookReturn = catchAsync(async (req, res) => {
   const userId = req.user._id;
   const borrowId = req.params.borrowId;
   const existRecord = await bookBorrowService.findOneBorrowHistory({ _id: borrowId });
-  if (!existRecord) {
+  if (!existRecord && existRecord.type !== bookAction.borrow) {
     throw new ApiError(httpStatus.BAD_REQUEST, message.bookBorrowReturn.NO_BOOK_FOUND_FOR_RETURN);
   }
   if (existRecord.isReturned) {

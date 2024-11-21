@@ -12,9 +12,8 @@ const addBookBorrow = async (body) => {
 };
 
 const getAllBookBorrowByFilter = async (options) => {
-  let filter = {};
-  let aggregateArray = [{ $sort: { createdAt: -1 } }];
-  aggregateArray.push(
+  let aggregateArray = [
+    { $sort: { createdAt: -1 } },
     {
       $lookup: {
         from: config.collections.books,
@@ -56,41 +55,52 @@ const getAllBookBorrowByFilter = async (options) => {
         path: '$user',
         preserveNullAndEmptyArrays: true,
       },
-    }
-  );
-  if (options.type) {
-    filter.type = options.type;
-  }
+    },
+  ];
+
+  // Build a $match stage for filtering
+  const matchFilter = {};
   if (options.search) {
     const reg = new RegExp(options.search, 'i');
-    filter.$or = [{ 'book.title': reg }, { 'user.username': reg }];
+    matchFilter.$or = [{ 'book.title': reg }, { 'user.username': reg }];
+  }
+
+  if (options.type) {
+    matchFilter.type = options.type;
   }
 
   if (options.userId) {
-    filter.userId = new ObjectId(options.userId);
+    matchFilter.userId = new ObjectId(options.userId);
   }
-  aggregateArray.push({
-    $match: filter,
-  });
-  if (options.page && options.limit) {
+
+  if (Object.keys(matchFilter).length > 0) {
     aggregateArray.push({
+      $match: matchFilter,
+    });
+  }
+
+  // Pagination logic
+  const paginationStages = [];
+  if (options.page && options.limit) {
+    paginationStages.push({
       $skip: (options.page - 1) * options.limit,
     });
-    aggregateArray.push({
+    paginationStages.push({
       $limit: options.limit,
     });
   }
+
+  // Main aggregation
   const list = await BooksBorrow.aggregate([
-    {
-      $match: filter,
-    },
+    ...aggregateArray,
     {
       $facet: {
         total: [{ $count: 'totalCount' }],
-        list: aggregateArray,
+        list: [...paginationStages],
       },
     },
   ]);
+
   return list;
 };
 

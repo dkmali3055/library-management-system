@@ -5,6 +5,7 @@ const { message } = require('../../../common/utils/message');
 const tokenModule = require('../../token');
 const catchAsync = require('../../../common/utils/catchAsync');
 const { response } = require('../../../common/utils/helper/response');
+
 const login = catchAsync(async (req, res) => {
   let { email, password } = req.body;
   let user = await userService.findOneUser({ email: email });
