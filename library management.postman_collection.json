@@ -1,0 +1,934 @@
+{
+	"info": {
+		"_postman_id": "6bd014a2-bac0-4de8-a615-d4b58774dee5",
+		"name": "library management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32367936",
+		"_collection_link": "https://crimson-crater-557147.postman.co/workspace/My-Workspace~a26f1c61-422b-492a-8c5d-9a5d1c6aa7c4/collection/32367936-6bd014a2-bac0-4de8-a615-d4b58774dee5?action=share&source=collection_link&creator=32367936"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"user_1@gmail.com\",\n    \"password\" : \"user@1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login_user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\" : \"user_1@gmail.com\",\n    \"password\" : \"user@1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/users/login",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "393"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"189-5xCFprhbvYU25Zj7abD/NDwEDLQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Nov 2024 11:31:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"statusCode\": 200,\n    \"message\": \"Login successful.\",\n    \"data\": {\n        \"user\": {\n            \"_id\": \"673dbed74024de2d2b10a7d6\",\n            \"username\": \"user_1\",\n            \"email\": \"user_1@gmail.com\",\n            \"password\": \"user@1\",\n            \"role\": \"User\"\n        },\n        \"tokens\": {\n            \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2RiZWQ3NDAyNGRlMmQyYjEwYTdkNiIsImlhdCI6MTczMjEwMjI5MCwiZXhwIjoxNzMyMTA5NDkwfQ.WSuQYkw8r8YDkeVI95X5JbUjkaefjx-tM1AIrYzWAtM\"\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "books",
+			"item": [
+				{
+					"name": "get all books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Noah",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get all books",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/books",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"books"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "Noah",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "5",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3545"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"dd9-W7hxB+sZ7R37msRG9Ry3QuaKbjE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Nov 2024 04:55:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"statusCode\": 200,\n    \"message\": \"\",\n    \"data\": {\n        \"result\": {\n            \"books\": [\n                {\n                    \"_id\": \"673de9a773305c7cd35be016\",\n                    \"title\": \"Fantastic Frozen Mouse\",\n                    \"author\": \"Tyrone Rohan\",\n                    \"genre\": \"story\",\n                    \"stock\": 3,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T13:52:39.780Z\",\n                    \"updatedAt\": \"2024-11-20T15:00:19.145Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"673de9a673305c7cd35be012\",\n                    \"title\": \"Awesome Granite Shirt\",\n                    \"author\": \"Emmett Corwin\",\n                    \"genre\": \"story\",\n                    \"stock\": 3,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T13:52:38.962Z\",\n                    \"updatedAt\": \"2024-11-20T13:52:38.962Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"673de9a273305c7cd35be00e\",\n                    \"title\": \"Intelligent Metal Bike\",\n                    \"author\": \"Lela Kohler\",\n                    \"genre\": \"story\",\n                    \"stock\": 1,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T13:52:34.021Z\",\n                    \"updatedAt\": \"2024-11-20T15:06:26.839Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"673de99d73305c7cd35be00a\",\n                    \"title\": \"Refined Granite Sausages\",\n                    \"author\": \"Mrs. Brett Koss\",\n                    \"genre\": \"story\",\n                    \"stock\": 6,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T13:52:29.797Z\",\n                    \"updatedAt\": \"2024-11-20T13:52:29.797Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"673de99773305c7cd35be006\",\n                    \"title\": \"Fantastic Steel Ball\",\n                    \"author\": \"Georgia Bartell\",\n                    \"genre\": \"story\",\n                    \"stock\": 3,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T13:52:23.240Z\",\n                    \"updatedAt\": \"2024-11-20T13:52:23.240Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"673de99673305c7cd35be002\",\n                    \"title\": \"Tasty Cotton Gloves\",\n                    \"author\": \"Kristi Larkin\",\n                    \"genre\": \"story\",\n                    \"stock\": 3,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T13:52:22.455Z\",\n                    \"updatedAt\": \"2024-11-20T13:52:22.455Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"673de99573305c7cd35bdffe\",\n                    \"title\": \"Incredible Wooden Tuna\",\n                    \"author\": \"Miss Stanley Swaniawski\",\n                    \"genre\": \"story\",\n                    \"stock\": 3,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T13:52:21.825Z\",\n                    \"updatedAt\": \"2024-11-20T13:52:21.825Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"673de99473305c7cd35bdffa\",\n                    \"title\": \"Gorgeous Soft Pizza\",\n                    \"author\": \"Jim Stanton\",\n                    \"genre\": \"story\",\n                    \"stock\": 3,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T13:52:20.590Z\",\n                    \"updatedAt\": \"2024-11-20T13:52:20.590Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"673de98773305c7cd35bdff6\",\n                    \"title\": \"Rustic Fresh Soap\",\n                    \"author\": \"Rene Klein\",\n                    \"genre\": \"story\",\n                    \"stock\": 3,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T13:52:07.170Z\",\n                    \"updatedAt\": \"2024-11-20T13:52:07.170Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"673de96f73305c7cd35bdff2\",\n                    \"title\": \"Credit Card Account\",\n                    \"author\": \"Noah Conn DDS\",\n                    \"genre\": \"story\",\n                    \"stock\": 3,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T13:51:43.369Z\",\n                    \"updatedAt\": \"2024-11-20T13:51:43.369Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"673dd637e8a30f83f9faaa1e\",\n                    \"title\": \"harry poter part 2\",\n                    \"author\": \"james\",\n                    \"genre\": \"story\",\n                    \"stock\": 4,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T12:29:43.964Z\",\n                    \"updatedAt\": \"2024-11-20T13:15:37.537Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"673dd625e8a30f83f9faaa18\",\n                    \"title\": \"harry poter part 1\",\n                    \"author\": \"james\",\n                    \"genre\": \"story\",\n                    \"stock\": 6,\n                    \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                    \"createdAt\": \"2024-11-20T12:29:25.016Z\",\n                    \"updatedAt\": \"2024-11-20T14:03:28.603Z\",\n                    \"__v\": 0\n                }\n            ],\n            \"count\": 12\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "add book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzNkY2U2YzQwMjRkZTJkMmIxMGE3ZGMiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6InVzZXJfMkBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InVzZXJfMiIsImlhdCI6MTczMjEwNDQ4MCwiZXhwIjoxNzMyMTExNjgwfQ.8HWFLX0L8hFiuHrODrJDXGowZ4dIgAsY60DdCX8YIBc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"{{$randomProductName}}\", // required , string\n    \"author\" : \"{{$randomFullName}}\", // required , string\n    \"genre\" : \"story\", // optional , string\n    \"stock\" : 3, // required , number,\n    \"coverImage\" : \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\"  // required, string\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/books",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\" : \"\", // required , string\n    \"author\" : \"\", // required , string\n    \"genre\" : \"\", // optional , string\n    \"stock\" : 5, // required , number,\n    \"coverImage\" : \"\"  // required, string\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/books",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "685"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2ad-mk+jHZsBhrEJUEbjp3/PRbKr60Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Nov 2024 12:08:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Book title is not allowed to be empty\",\n    \"stack\": \"Error: Book title is not allowed to be empty\\n    at /home/pedalsup/Documents/Projects/library-management-system/src/common/middlewares/validate.js:18:17\\n    at Layer.handle [as handle_request] (/home/pedalsup/Documents/Projects/library-management-system/node_modules/express/lib/router/layer.js:95:5)\\n    at next (/home/pedalsup/Documents/Projects/library-management-system/node_modules/express/lib/router/route.js:149:13)\\n    at /home/pedalsup/Documents/Projects/library-management-system/src/common/middlewares/auth.js:48:9\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\"\n}"
+						},
+						{
+							"name": "add book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\" : \"harry poter part 1\", // required , string\n    \"author\" : \"james\", // required , string\n    \"genre\" : \"story\", // optional , string\n    \"stock\" : 5, // required , number,\n    \"coverImage\" : \"\"  // required, string\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/books",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "697"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b9-e3C7mjBoGb2VnIZk2MZp4nBhlF0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Nov 2024 12:08:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Book cover image is not allowed to be empty\",\n    \"stack\": \"Error: Book cover image is not allowed to be empty\\n    at /home/pedalsup/Documents/Projects/library-management-system/src/common/middlewares/validate.js:18:17\\n    at Layer.handle [as handle_request] (/home/pedalsup/Documents/Projects/library-management-system/node_modules/express/lib/router/layer.js:95:5)\\n    at next (/home/pedalsup/Documents/Projects/library-management-system/node_modules/express/lib/router/route.js:149:13)\\n    at /home/pedalsup/Documents/Projects/library-management-system/src/common/middlewares/auth.js:48:9\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\"\n}"
+						},
+						{
+							"name": "add book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\" : \"harry poter part 1\", // required , string\n    \"author\" : \"james\", // required , string\n    \"genre\" : \"story\", // optional , string\n    \"stock\" : 5, // required , number,\n    \"coverImage\" : \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\"  // required, string\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/books",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "283"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11b-+/qEQp//K/Zd9WNNOs5ZsMQ9FIc\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Nov 2024 12:29:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Book already exist.\",\n    \"stack\": \"Error: Book already exist.\\n    at /home/pedalsup/Documents/Projects/library-management-system/src/api/books/controller/books.controller.js:12:11\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\"\n}"
+						},
+						{
+							"name": "add book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\" : \"harry poter part 2\", // required , string\n    \"author\" : \"james\", // required , string\n    \"genre\" : \"story\", // optional , string\n    \"stock\" : 5, // required , number,\n    \"coverImage\" : \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\"  // required, string\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/books",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "366"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"16e-n8yOFfaFFtOyGMYZWcJXNLdaTJg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Nov 2024 12:29:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"statusCode\": 201,\n    \"message\": \"Book created successfully.\",\n    \"data\": {\n        \"book\": {\n            \"title\": \"harry poter part 2\",\n            \"author\": \"james\",\n            \"genre\": \"story\",\n            \"stock\": 5,\n            \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n            \"_id\": \"673dd637e8a30f83f9faaa1e\",\n            \"createdAt\": \"2024-11-20T12:29:43.964Z\",\n            \"updatedAt\": \"2024-11-20T12:29:43.964Z\",\n            \"__v\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "borrow book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/books/borrow/:bookId",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books",
+								"borrow",
+								":bookId"
+							],
+							"variable": [
+								{
+									"key": "bookId",
+									"value": "673de9a273305c7cd35be00e"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "borrow book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/books/borrow/:bookId",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"books",
+										"borrow",
+										":bookId"
+									],
+									"variable": [
+										{
+											"key": "bookId",
+											"value": "673dd637e8a30f83f9faaa1e"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "303"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12f-qa0diP9f3mN0a5hJQceO/9u1P5I\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Nov 2024 13:15:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"statusCode\": 200,\n    \"message\": \"Book borrowed successfully.\",\n    \"data\": {\n        \"bookBorrow\": {\n            \"bookId\": \"673dd637e8a30f83f9faaa1e\",\n            \"userId\": \"673dbed74024de2d2b10a7d6\",\n            \"type\": \"Borrow\",\n            \"_id\": \"673de0f9a56cf28851c85e6b\",\n            \"createdAt\": \"2024-11-20T13:15:37.567Z\",\n            \"updatedAt\": \"2024-11-20T13:15:37.567Z\",\n            \"__v\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "return book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books/return/:borrowId",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books",
+								"return",
+								":borrowId"
+							],
+							"variable": [
+								{
+									"key": "borrowId",
+									"value": "673df94bdb17cad7833da5ed"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "return book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/books/return/:bookId",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"books",
+										"return",
+										":bookId"
+									],
+									"variable": [
+										{
+											"key": "bookId",
+											"value": "673dd637e8a30f83f9faaa1e"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "303"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12f-G6el/lP3PDutLn5YRPi7A5Hn4jU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Nov 2024 13:19:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"statusCode\": 200,\n    \"message\": \"Book returned successfully.\",\n    \"data\": {\n        \"bookBorrow\": {\n            \"bookId\": \"673dd637e8a30f83f9faaa1e\",\n            \"userId\": \"673dbed74024de2d2b10a7d6\",\n            \"type\": \"Return\",\n            \"_id\": \"673de1f803934a4f741739ad\",\n            \"createdAt\": \"2024-11-20T13:19:52.731Z\",\n            \"updatedAt\": \"2024-11-20T13:19:52.731Z\",\n            \"__v\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "borrow history",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books/borrow-history?search=Fantastic",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books",
+								"borrow-history"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "Borrow",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Fantastic"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "borrow history",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/books/borrow-history?search=Fantastic",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"books",
+										"borrow-history"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "Borrow",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "Fantastic"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1312"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"520-FVGFCx1nCLWb4DLnHaw2WchhM1c\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Nov 2024 04:55:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"statusCode\": 200,\n    \"message\": \"\",\n    \"data\": {\n        \"result\": {\n            \"books\": [\n                {\n                    \"_id\": \"673df983db17cad7833da5fd\",\n                    \"bookId\": \"673de9a773305c7cd35be016\",\n                    \"userId\": \"673dbed74024de2d2b10a7d6\",\n                    \"type\": \"Return\",\n                    \"isReturned\": false,\n                    \"createdAt\": \"2024-11-20T15:00:19.284Z\",\n                    \"updatedAt\": \"2024-11-20T15:00:19.284Z\",\n                    \"__v\": 0,\n                    \"book\": {\n                        \"_id\": \"673de9a773305c7cd35be016\",\n                        \"title\": \"Fantastic Frozen Mouse\",\n                        \"author\": \"Tyrone Rohan\",\n                        \"genre\": \"story\",\n                        \"stock\": 3,\n                        \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                        \"createdAt\": \"2024-11-20T13:52:39.780Z\",\n                        \"updatedAt\": \"2024-11-20T15:00:19.145Z\",\n                        \"__v\": 0\n                    },\n                    \"user\": {\n                        \"_id\": \"673dbed74024de2d2b10a7d6\",\n                        \"username\": \"user_1\",\n                        \"email\": \"user_1@gmail.com\"\n                    }\n                },\n                {\n                    \"_id\": \"673df94bdb17cad7833da5ed\",\n                    \"bookId\": \"673de9a773305c7cd35be016\",\n                    \"userId\": \"673dbed74024de2d2b10a7d6\",\n                    \"type\": \"Borrow\",\n                    \"isReturned\": true,\n                    \"createdAt\": \"2024-11-20T14:59:23.404Z\",\n                    \"updatedAt\": \"2024-11-20T15:00:19.212Z\",\n                    \"__v\": 0,\n                    \"book\": {\n                        \"_id\": \"673de9a773305c7cd35be016\",\n                        \"title\": \"Fantastic Frozen Mouse\",\n                        \"author\": \"Tyrone Rohan\",\n                        \"genre\": \"story\",\n                        \"stock\": 3,\n                        \"coverImage\": \"https://dlicommbl.s3.amazonaws.com/test-sample/1732105648588_coder.png\",\n                        \"createdAt\": \"2024-11-20T13:52:39.780Z\",\n                        \"updatedAt\": \"2024-11-20T15:00:19.145Z\",\n                        \"__v\": 0\n                    },\n                    \"user\": {\n                        \"_id\": \"673dbed74024de2d2b10a7d6\",\n                        \"username\": \"user_1\",\n                        \"email\": \"user_1@gmail.com\"\n                    }\n                }\n            ],\n            \"count\": 2\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "upload",
+			"item": [
+				{
+					"name": "upload files",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/home/pedalsup/Pictures/multimedia/coder.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/upload/upload-book-cover",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"upload",
+								"upload-book-cover"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:4040/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzNkYmVkNzQwMjRkZTJkMmIxMGE3ZDYiLCJyb2xlIjoiVXNlciIsImVtYWlsIjoidXNlcl8xQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoidXNlcl8xIiwiaWF0IjoxNzMyMTE0NzI4LCJleHAiOjE3MzIxMjE5Mjh9.vI3L0Ho7koqlxArUnaC20YeQKbFs7LjvshpAhTgq28Q",
+			"type": "string"
+		}
+	]
+}
